@@ -42,7 +42,6 @@ impl Mul<Chain> for Chain {
             *w *= last;
         }
         self.0.append(&mut other.0);
-
         self
     }
 }
@@ -68,7 +67,9 @@ fn minchain(n: BigUint) -> Chain {
 
 fn chain(n: BigUint, k: BigUint) -> Chain {
     let (q, r) = n.div_rem(&k);
-    if r.is_zero() || r.is_one() {
+    if r.is_zero() {
+        minchain(k) * minchain(q)
+    } else if r.is_one() {
         // We handle the r = 1 case here to prevent unnecessary recursion.
         minchain(k) * minchain(q) + r
     } else {
@@ -78,9 +79,9 @@ fn chain(n: BigUint, k: BigUint) -> Chain {
 
 #[cfg(test)]
 mod tests {
+    use super::{minchain, Chain};
     use num_bigint::BigUint;
-
-    use super::minchain;
+    use std::str::FromStr;
 
     #[test]
     fn minchain_87() {
@@ -101,5 +102,18 @@ mod tests {
                 BigUint::from(87u32),
             ]
         );
+    }
+
+    impl Chain {
+        fn has_duplicates(&self) -> bool {
+            self.0.windows(2).any(|w| w[0] == w[1])
+        }
+    }
+
+    #[test]
+    fn example() {
+        let a = minchain(BigUint::from_str("357686312646216567629135").unwrap());
+        println!("{:?}", a);
+        assert!(!a.has_duplicates());
     }
 }
