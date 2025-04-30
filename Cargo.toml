@@ -1,14 +1,13 @@
 [package]
-name = "addchain"
-description = "Generate addition chains"
+name = "addchain-arcium-fork"
+description = "Generate addition chains (Arcium fork)"
 version = "0.2.1"
-authors = ["Jack Grigg <thestr4d@gmail.com>"]
-repository = "https://github.com/str4d/addchain"
-readme = "README.md"
-categories = ["algorithms", "cryptography"]
-license = "MIT OR Apache-2.0"
 edition = "2018"
-publish = ["arcium"]
+license = "MIT OR Apache-2.0"
+homepage = "https://www.arcium.com"
+readme = "README.md"
+repository = "https://github.com/arcium-hq/addchain"
+categories = ["algorithms", "cryptography"]
 
 [badges]
 maintenance = { status = "experimental" }
