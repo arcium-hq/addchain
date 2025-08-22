@@ -13,6 +13,6 @@ categories = ["algorithms", "cryptography"]
 maintenance = { status = "experimental" }
 
 [dependencies]
-num-bigint = "0.3"
+num-bigint = "0.4.6"
 num-integer = "0.1"
 num-traits = "0.2"
