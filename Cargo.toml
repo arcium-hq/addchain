@@ -1,5 +1,5 @@
 [package]
-name = "addchain-arcium-fork"
+name = "addchain"
 description = "Generate addition chains (Arcium fork)"
 version = "0.2.1"
 edition = "2018"
